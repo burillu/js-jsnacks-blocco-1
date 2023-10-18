@@ -6,13 +6,16 @@ const inputNumPrint = document.getElementById('input-num-print');
 //prendo bottone
 const btn = document.getElementById('btn-go');
 btn.addEventListener('click', createNumbers);
+// prendo div result
+const result= document.getElementById('result-print');
 
 function createNumbers() {
-
+    result.classList.add('d-none');
     // creo un array con dei numeri casuali
 
     let randomic = [];
     let lengthArray = parseInt(inputNum.value);
+    let howManyNum = parseInt(inputNumPrint.value);
     // ciclo e spingo ogni numero dentro randomic
     for (let i = 0; i < lengthArray; i++) {
         const num = getRndInteger(1, 100);
@@ -23,7 +26,11 @@ function createNumbers() {
 
     // stampare ultimi 5 numeri
 
-    console.log(randomic.slice(-5))
+    console.log(randomic.slice(-(howManyNum)));
+    result.innerHTML= `Ecco i ${howManyNum} numeri estratti : <br>${randomic.slice(-(howManyNum))}
+    `
+    result.classList.remove('d-none');
+
 }
 
 
